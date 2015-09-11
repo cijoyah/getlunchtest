@@ -1,0 +1,248 @@
+body {
+  font-family: "Proxima Nova";
+  font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+.wrapper {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.wrapper.form {
+  padding-top: 50px;
+  width: 60%;
+}
+
+.jumbotron {
+  margin-top: 50px;
+  background-color: white;
+}
+
+.well.jumbotron {
+  background-color: white;
+}
+
+.jumbotron.btn-group {
+  margin:0px auto;
+  background-color: white;
+}
+
+.container {
+  background: #F5F5F5;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.pagination {
+  margin: 0 auto;
+}
+
+.button {
+  border: 1px solid #9B9B9B;
+  padding: .7rem 1.25rem;
+  border-radius: .3rem;
+  outline: none;
+  background: white;
+  color: #9B9B9B;
+}
+
+#sign_up_business {
+  position: fixed;
+  width: 120px;
+  bottom: 20px;
+  right: 20px;
+}
+
+.nav.container-fluid {
+  padding-left: 16%;
+  padding-right: 16%;
+  background-color: #ffffff;
+}
+.promotion-card-container {
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+.promotion-card-timer {
+  font-family: helvetica;
+  font-size: 23px;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 25px;
+}
+
+.promotion-card-content {
+  padding: 4px;
+  overflow: hidden;
+  .promotion-card-business {
+    font-size: 18px;
+  }
+}
+
+.promotion-card-image img {
+  width:100%;
+  height: 66.66%;
+  padding: 10px 10px 0px 10px;
+
+}
+
+/* promotion show */
+
+.promotion-show {
+    background-color: #fff;
+    padding: 0 !important;
+}
+
+.promotion-image img {
+    width: 100%;
+    padding: 30px;
+}
+
+.promotion-information h1 h2 {
+    padding: 0px 30px 30px 30px;
+}
+
+.promotion-countdown {
+    padding: 0px 30px 0px 15px;
+}
+
+.promotion-countdown h1 {
+  font-size: 20px;
+  padding-left: 15px;
+
+}
+
+.promotion-business {
+  margin: 0px 0px 20px 0px;
+}
+
+.promotion-business {
+  padding: 0px 30px 0px 30px;
+}
+
+.promotion-pitch {
+  padding: 15px;
+
+}
+
+.promotion-pitch h1 {
+  margin: 0px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+.promotion-price {
+  padding:15px;
+}
+
+.promotion-price h1 {
+  margin: 0px;
+  padding-left: 15px;
+  font-size: 40px;
+  color: red;
+}
+
+.promotion-description {
+  margin: 0px;
+  font-size: 20px;
+}
+
+.promotion-description p {
+  padding: 0px 30px 0px 30px;
+}
+
+.map-address {
+  background-color: white;
+  left: 15px;
+  padding: 15px 0px 0px 0px;
+
+  #address {
+  padding: 0px 15px 15px 15px;    
+    h4 {
+    margin-top: 0px;
+    }
+  }
+}
+
+.business-location-info {
+  margin-left: 0px;
+  padding:0px;
+}
+.distance {
+      margin-top: 0px;
+}
+
+.walking-time-distance {
+  padding: 0px 15px 15px 15px;
+}
+
+.business-address {
+  margin-left: 15px;
+}
+.social-links {
+  background-color: white;
+  margin: 15px 0px 15px;
+  padding: 15px;
+}
+
+.fa-clock-o {
+  margin-right: 15px;
+}
+
+.fa-street-view {
+  margin-right: 15px;
+}
+
+.fa-map-marker {
+  margin-left: 15px;
+}
+
+.stripe {
+  padding: 0px;
+}
+
+.stripe-form {
+  margin: 30px;
+  padding: 30px;
+  background-color: white;
+  height: 92px;
+
+}
+
+.dashboard-image img{
+  width: 100%;
+}
+
+.dashboard-image.col-md-4 {
+  padding: 0px;
+}
+
+.col-md-4.well {
+  margin-top: 80px;
+  background-color: white;
+}
+
+.well.dashboard-promotion-card.col-md-12 {
+  background-color: white;
+}
+
+@import 'map.scss';
+@import 'home.scss';
+@import 'promotionss.scss';

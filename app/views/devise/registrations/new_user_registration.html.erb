@@ -1,0 +1,33 @@
+<h2>Sign up Business</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-required-inputs">
+    <%= f.input :emttail, required: true, autofocus: true %>
+    <%= f.input :name, required: true %>
+    <%= f.file_field :avatar, required: true %>
+    <%= f.text_field :remote_avatar_url %>
+    <%= f.input :address, required: true %>
+    <%= f.input :city, required: true %>
+    <%= f.input :postcode, required: true %>
+    <%= f.input :tel, required: true %>
+    <%= f.input :tel, required: true %>
+    
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :role, value: "business" %>
+  </div>
+
+  <div class="form-optional-inputs">
+    <%= f.input :website %>
+    <%= f.input :facebook %>
+    <%= f.input :twitter %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

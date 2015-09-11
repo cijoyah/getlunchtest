@@ -1,0 +1,2 @@
+= form_tag promotion_charges_path(promotion) do
+  %script.stripe-button{"data-amount" => promotion.price*100, "data-description" => promotion.pitch, "data-currency" => "gbp", "data-key" => Rails.configuration.stripe[:publishable_key], :src => "https://checkout.stripe.com/checkout.js"}

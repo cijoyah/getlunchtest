@@ -1,0 +1,92 @@
+.container
+  .panel-body
+    .row
+      .col-md-7
+        .
+          = image_tag @promotion.user.avatar.show.url
+          %h2= @promotion.user.name
+          %div{class: "promotion_content", id: "promotion_content#{@promotion.id}"}
+            = hidden_field_tag "promotion_from", @promotion.start_time, :id => "promotion_from_#{@promotion.id}", :class => "promotion_from"
+            = hidden_field_tag "promotion_to", @promotion.end_time, :id => "promotion_to_#{@promotion.id}", :class => "promotion_to"
+            %h4{id: "countdown_#{@promotion.id}", :class => "countdown"} -- Days --Hours -- Mins -- Secs
+
+
+            %h4= @promotion.pitch
+            %h4= @promotion.description
+            %h4= number_to_currency(@promotion.price, unit: '£')
+            %h4= @promotion.available_on_date
+            %h4= @promotion.cuisine
+
+            -if current_user
+              - if current_user.id == @promotion.user.id
+                =link_to "Edit", edit_promotion_path(@promotion)
+                =link_to "Delete", promotion_path(@promotion), method: :delete
+
+
+            - if @promotion.is_active?
+              - if user_signed_in?
+                =render "charges/stripe_form", promotion: @promotion
+              - else
+                please login
+            - else
+              promo ended
+
+          / - if user_signed_in? && @promotion.active_promotion
+          /   =render "charges/stripe_form", promotion: @promotion
+          / - else
+          /   %strong Please login 
+
+        .col-md-5
+          #map-container
+            #map-canvas
+
+          #address
+            %h4.duration
+            %h4.distance
+            %h4= @promotion.user.name
+            %h4= @promotion.user.address
+            %h4= @promotion.user.city
+            %h4= @promotion.user.postcode
+
+
+    <div class="promotion-countdown">
+          <div class="promotion_content" id="promotion_content<%= @promotion.id %>">
+            <%= hidden_field_tag "promotion_from", @promotion.start_time, :id => "promotion_from_#{@promotion.id}", :class => "promotion_from" %>
+            <%= hidden_field_tag "promotion_to", @promotion.end_time, :id => "promotion_to_#{@promotion.id}", :class => "promotion_to" %>
+            <h4 class="countdown" id="countdown_<%= @promotion.id %>">-- Days --Hours -- Mins -- Secs</h4>
+          </div>
+        </div>
+
+
+<div class="row col-md-5 map-address">
+        <div class="col-md-12" id="map-container">
+          <div id="map-canvas"></div>
+        </div>
+        <div class="row business-location-info col-md-12" >  
+          <i width="40"class="fa fa-map-marker fa-5x col-md-2">
+          </i>
+          <div class="business-address col-md-5" id="address">
+            <h4><%= @promotion.user.address %></h4>
+            <h4><%= @promotion.user.city %></h4>
+            <h4><%= @promotion.user.postcode %></h4>
+          </div>
+          <div class="walking-time-distance col-md-5">
+            <h4 class="distance"><i class="fa fa-street-view"></i></h4>
+            <h4 class="duration"><i class="fa fa-clock-o"></i></h4> 
+          </div>
+        </div>
+        <div class="row col-md-12 stripe">
+          <% if @promotion.is_active? %>
+            <% if user_signed_in? %>
+              <%= render "charges/stripe_form", promotion: @promotion %>
+            <% else %>
+              please login
+            <% end %>
+          <% else %>
+            promo ended
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+body {
+  background: #f5f5f5 !important;
+}
+
+header {
+  background: #ffffff;
+}
+
+#wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.promotion-card {
+  background: #ffffff;
+  height: 350px;
+  margin-top: 30px;
+  .promotion-card-content {
+    padding: 10px;
+  }
+  .countdown{
+    font-size: 12px !important;
+    text-align: right;
+  }
+}
+
+#promotions {
+  .promotion {
+    background: #ffffff;
+    width: 30%;
+    float: left;
+    margin: 1rem 1.5%;
+    border: 1px solid #E4E4E4;
+    border-radius: 0.3rem;
+    .promotion_image {
+      height: 200px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        border-radius: .3rem .3rem 0 0;
+        padding: 10px;
+      }
+    }
+    .promotion_content {
+      h2 {
+        margin: 0;
+        font-weight: 100;
+        padding: 1rem 5%;
+        border-bottom: 1px solid #E4E4E4;
+        font-size: 1.25rem;
+        a {
+          text-decoration: none;
+          color: #333233;
+          &:hover {
+            color: #50A7C7;
+          }
+        }
+      }
+      .data {
+        padding: .75rem 5%;
+        color: #969696;
+        .user, .buttons {
+          margin: 0;
+          font-size: .8rem;
+        }
+        .user {
+          float: left;
+        }
+        .buttons {
+          float: right;
+          span {
+            margin-left: .5rem;
+          }
+        }
+      }
+    }
+  }
+}

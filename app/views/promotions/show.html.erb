@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <div class="panel-body">
+
+    <!-- left columm -->
+    <div class="row">
+      <div class="col-md-7 promotion-show">
+        <div class="promotion-image">
+          <%= image_tag @promotion.image %>
+        </div>
+        <div class="promotion-price">
+          <h1>&pound<%= number_with_precision(@promotion.price, precision: 2)   %></h1>
+        </div>
+        <div class="promotion-pitch">
+          <h1><em><%= @promotion.pitch %></em></h1>
+        </div>
+        <div class="promotion-countdown">
+          <div class="promotion_content" id="promotion_content<%= @promotion.id %>">
+            <%= hidden_field_tag "promotion_from", @promotion.start_time, :id => "promotion_from_#{@promotion.id}", :class => "promotion_from" %>
+            <%= hidden_field_tag "promotion_to", @promotion.end_time, :id => "promotion_to_#{@promotion.id}", :class => "promotion_to" %>
+            <h1 class="countdown" id="countdown_<%= @promotion.id %>">-- Days --Hours -- Mins -- Secs</h1>
+          </div>
+        </div>
+        <div class="promotion-information">
+          <div class="promotion-business">
+            <h1><%= @promotion.user.name %></h1>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="promotion-description">
+                <p class="lead"><%= @promotion.description %></p>
+              </div>
+            </div>
+          </div>         
+        </div>
+      </div>
+      
+      <div>
+      <%= render "right_column_show" %> 
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+<html>
+
+  <head>
+    <title></title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgFp1DYdJKHmPIHyOU3jhGRlgqdM45wz0"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment-range/1.0.7/moment-range.min.js" type="text/javascript"></script>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'devise/menu/nav_items' %>
+    </header>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+    <% unless user_signed_in? %>
+      <div class="button" data-target="#business_sign_up" data-toggle="modal" id="sign_up_business" type="button">Create Promo</div>
+    <% end %>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="sign_up_customer" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :email, required: true, autofocus: true %>
+              <%= f.input :name, required: true %>
+              <%= f.input :tel, required: true %>
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+              <%= f.input :password_confirmation, required: true %>
+              <%= f.hidden_field :role, value: "customer"  %>
+              <%= f.button :submit, "Sign up" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="business_sign_up" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Business Sign Up</h4>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :email, required: true, autofocus: true  %>
+              <%= f.input :name, required: true  %>
+            <!--   <%= f.file_field :avatar, required: true  %>
+              <%= f.text_field :remote_avatar_url  %> -->
+              <%= f.input :address, required: true  %>
+              <%= f.input :city, required: true  %>
+              <%= f.input :postcode, required: true  %>
+              <%= f.input :tel, required: true  %>
+              <%= f.input :website  %>
+              <%= f.input :facebook  %>
+              <%= f.input :twitter  %>
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+              <%= f.input :password_confirmation, required: true %>
+              <%= f.hidden_field :role, value: "business"  %>
+              <%= f.button :submit, "Sign up" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="sign_in" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= f.input :email, required: false, autofocus: true %>
+              <%= f.input :password, required: false %>
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              <%= f.button :submit, "Sign In" %>
+            <% end %>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

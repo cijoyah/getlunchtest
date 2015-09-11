@@ -1,0 +1,38 @@
+<div id="wrapper">
+  <div class="promotion-card-container">
+    <div class="row">
+      <% @promotions.each do |promotion| %>
+      <%= link_to promotion do %>
+        <div class="col-md-4">
+          <div class="promotion-card">
+            <div class="promotion-card-image">
+              <%= link_to (image_tag promotion.image), promotion %>
+            </div>
+            <div class="promotion-card-content">
+              <p class="promotion-card-business"><strong><%= promotion.user.name %></strong></p>
+              <p class="promotion-card-pitch"><%= link_to promotion.pitch, promotion %></p>
+              <p class="promotion-card-price"><em>&pound<%= number_with_precision(promotion.price, precision: 2) %></em></p>
+              <div class="promotion-card-footer">
+                <div class="promotion-card-timer">
+                  <div class="promotion_content" id="promotion_content<%= promotion.id %>">
+                    <%= hidden_field_tag "promotion_from", promotion.start_time, :id => "promotion_from_#{promotion.id}", :class => "promotion_from" %>
+                    <%= hidden_field_tag "promotion_to", promotion.end_time, :id => "promotion_to_#{promotion.id}", :class => "promotion_to" %>
+                    <p class="countdown" id="countdown_<%= promotion.id %>">-- Days --Hours --</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+    <div class="row">
+      <div class="pagination">
+        <%= will_paginate @promotions, renderer: BootstrapPagination::Rails,class: "pagination pagination-centered" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+

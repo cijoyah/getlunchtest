@@ -1,0 +1,53 @@
+
+<div class="row">
+  <div class="well dashboard-promotion-card col-md-12">
+    <div class="dashboard-image col-md-4">
+      <%= image_tag promotion.image %>
+    </div>
+    <div class="col-md-8">
+      <div class="dashboard-promotion-card-timer">
+        <div class="promotion_content" id="promotion_content<%= promotion.id %>">
+          <%= hidden_field_tag "promotion_from", promotion.start_time, :id => "promotion_from_#{promotion.id}", :class => "promotion_from" %>
+          <%= hidden_field_tag "promotion_to", promotion.end_time, :id => "promotion_to_#{promotion.id}", :class => "promotion_to" %>
+          <h4 class="countdown" id="countdown_<%= promotion.id %>">-- Days --Hours --</h4>
+        </div>
+      </div>
+      <div class="dashboard-content">
+        <h3><%= promotion.pitch %></h3>
+        <p><%= promotion.description %></p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Price: </td>
+              <td>&pound <%= promotion.price %></td>
+            </tr>
+            <tr>
+              <td>Sales: </td>
+              <td><%= promotion.buyers %></td>
+            </tr>
+            <tr>
+              <td>Revenue: </td>
+              <td>&pound <%= promotion.value_of_promotion_sold %></td>
+            </tr> 
+          </tbody>
+        </table>
+        <div class="dashboard-functions">
+          <%= link_to "View", promotion_path(promotion), class:"btn btn-success"%>  
+          <% if @user == current_user %>
+            <%= link_to "Edit", edit_promotion_path(promotion), class:"btn btn-warning" %>
+          <% if promotion.is_active? %>
+            <%= link_to "Stop", pause_promotion_path(promotion), class:"btn btn-danger"%>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <div class="well jumbotron">
+    <h2><center>Purchase complete :)</center></h2>
+    <h3>Your GetLunch purchase of <strong><em><%= @promotion.pitch %></em></strong> for <strong>&pound<%= @promotion.price %></strong> has now been sucessfully processed, you will recieve a text message shortly confirming pickup time.</h3>
+    <center>
+      <div class="jumbotron btn-group inline">
+        <%= link_to "Return to deal", promotion_path(@promotion), class:"btn btn-success"%>
+        <%= link_to "Browse more deals", root_path, class:"btn btn-success"%>
+      </div>
+    </center>
+  </div>
+</div>
+
+
+

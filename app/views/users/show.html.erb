@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="row">
+
+    <div class="stat-1 col-md-4 well" id="stat-1">
+      <h3><center>Promotions Created</center></h3>
+      <h4><center><%= @promotion_count %></h4>
+    </div>
+
+    <div class="stat-2 col-md-4 well">
+      <h3><center>Total Revenue</center></h3>
+      <h4><center><%= @total_sum_of_all_sales %></center></h4>
+    </div>
+
+    <div class="stat-3 col-md-4 well">
+      <h3><center>Total Promotions Sold</center></h3>
+      <h4><center><%= @total_of_all_promotions_sold %></center></h4>
+    </div>
+  </div>
+
+  <h2>Active promotions: </h2>
+  <div class="row">
+    <%= render @active_promotions, partial: "promotions/promotion" %>
+  </div>
+
+  <% unless @expired_promotions.count <= 0 %>
+    <h2> Expired promotions: </h2>
+    <div class="row">
+      <%= render @expired_promotions, partial: "promotions/promotion" %>
+    </div>
+  <% end %>
+  
+  
+</div>
+
+

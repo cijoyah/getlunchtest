@@ -1,0 +1,37 @@
+<%= simple_form_for @promotion do |f| %>
+
+  <div class="form-group">
+    <%= f.input :pitch, maxlength: 100 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :image, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :price %>
+  </div>
+
+  <div class="form-inline">
+    <%= f.input :start_time %>
+  </div>
+
+  <div class="form-inline">
+    <%= f.input :end_time %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :cuisine %>
+  </div>
+
+
+  <%= f.button :submit %>
+
+<% end %>
+
+
+
