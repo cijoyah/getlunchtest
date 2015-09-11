@@ -5,7 +5,7 @@ class PromotionsController < ApplicationController
 
     def index
       @promotions = Promotion.active.all.order("created_at DESC")
-      @promotions = Promotion.paginate(:page => params[:page], :per_page => 12)
+      # @promotions = Promotion.paginate(:page => params[:page], :per_page => 12)
     end
 
     def expired
